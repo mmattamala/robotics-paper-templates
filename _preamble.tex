@@ -1,0 +1,168 @@
+
+%=====================================================
+% Packages
+%=====================================================
+\usepackage{times}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage{balance}
+\usepackage[dvipsnames,table]{xcolor}
+%\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{todonotes}
+\usepackage{booktabs} %needed for nice tables
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{bbm} % indicator function
+\usepackage{mathtools}
+\usepackage{pgf} % for calculating the values for gradient
+\usepackage{etoolbox} % robustify command
+\usepackage{enumitem} % to modify itemize environments
+\usepackage{amssymb}
+
+% \usepackage[numbers]{natbib} % to use citet
+%\usepackage[backend=biber,style=ieee,natbib=true]{biblatex}
+%\renewcommand{\bibfont}{\footnotesize} % for IEEE bibfont size
+
+
+\usepackage{hyperref} % to show links to the references, and also back to where the reference was cited
+\usepackage{lipsum} % Dummy text (lorem ipsum)
+\usepackage[mode=match]{siunitx} % SI units
+\usepackage{mathtools}
+\usepackage{xspace}
+\usepackage[acronym, nonumberlist, nogroupskip]{glossaries-extra}
+
+%table turn text
+\usepackage{pbox}
+%\usepackage{emoji}
+
+% Notes in tables
+\usepackage{threeparttable}
+\usepackage{tablefootnote}
+
+\usepackage{tikz}
+
+\usepackage[normalem]{ulem}
+\usepackage{gensymb}
+
+%=====================================================
+% % Setups the hyperref package
+% % Colors for hyperref from https://tex.stackexchange.com/a/599739
+% % Set 2
+% \definecolor{MK_Two_One}{RGB}{178,24,43} % Nice red
+% \definecolor{MK_Two_Two}{RGB}{239,138,98}
+% \definecolor{MK_Two_Three}{RGB}{253,219,199}
+% \definecolor{MK_Two_Four}{RGB}{209,229,240}
+% \definecolor{MK_Two_Five}{RGB}{103,169,207}
+% \definecolor{MK_Two_Six}{RGB}{33,102,172} % Nice blue
+
+% % setup new colors 2
+\hypersetup{
+colorlinks=true
+,linkcolor=NavyBlue
+,citecolor=NavyBlue
+% ,filecolor=MK_Two_Six
+,urlcolor=NavyBlue
+% ,menucolor=MK_Two_Five
+% ,runcolor=MK_Two_Four
+% ,linkbordercolor=MK_Two_One
+% ,citebordercolor=MK_Two_Two
+% ,filebordercolor=MK_Two_Three
+% ,urlbordercolor=MK_Two_Six
+% ,menubordercolor=MK_Two_Five
+% ,runbordercolor=MK_Two_Four
+}
+
+%=====================================================
+% Setup of caption size
+% % Subcaption and caption setup is used to make the header figure
+% \usepackage{subcaption}
+% \captionsetup[figure]{font=small}
+% \captionsetup[table]{font=small}
+
+%=====================================================
+%\usepackage{titlesec}
+% Setup of subsubsection
+%\titleformat*{\subsubsection}{\noindent\normalfont\normalsize\bfseries}
+
+%=====================================================
+% Setup of SI Units
+\sisetup{per-mode = symbol,
+         detect-weight = true,
+         range-phrase = --,
+         range-units = single,
+         detect-all = true}
+
+%=====================================================
+% Commands
+%=====================================================
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+% Inter-reference helpers (for figures, sections, etc)
+\def\secref#1{Sec.~\ref{#1}}
+\def\appref#1{Appendix ~\ref{#1}}
+\def\figref#1{Fig.~\ref{#1}}
+\def\tabref#1{Tab.~\ref{#1}}
+\def\eqref#1{Eq.~(\ref{#1})}
+\def\algref#1{Alg.~\ref{#1}}
+
+% Random commands
+\newcommand{\inlinetitle}[1]{\emph{#1:}}
+
+\newcommand{\etal}{et al.}
+
+
+\newcommand{\vt}[1]{\parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{#1}}}}
+
+%=====================================================
+% Colors
+%=====================================================
+\usepackage{color}
+\definecolor{ColorLightCyan}{rgb}{0.88,1,1}
+\definecolor{ColorLightTurquoise}{rgb}{0.5, 1, 0.8}
+\definecolor{ColorOrange}{rgb}{1.0, 0.7, 0.0}
+\definecolor{ColorTrajBlue}{rgb}{0,0.5,1.0}
+\definecolor{ColorTrajOrange}{rgb}{0.87,0.56,0.01}
+
+%=====================================================
+% Extra symbols
+%=====================================================
+\usepackage{amssymb}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newcommand{\magentasquare}{{\textcolor{magenta}{$\blacksquare$}}}
+\newcommand{\bluesquare}{{\textcolor{blue}{$\blacksquare$}}}
+\newcommand{\lightbluesquare}{{\textcolor{ColorTrajBlue}{$\blacksquare$}}}
+\newcommand{\graysquare}{{\textcolor{gray}{$\blacksquare$}}}
+\newcommand{\orangesquare}{{\textcolor{ColorTrajOrange}{$\blacksquare$}}}
+\newcommand{\yellowsquare}{{\textcolor{yellow}{$\blacksquare$}}}
+\newcommand{\redsquare}{{\textcolor{red}{$\blacksquare$}}}
+\newcommand{\purplesquare}{{\textcolor{purple}{$\blacksquare$}}}
+
+\usepackage{tikz}
+\newcommand*\notecircle[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt, thick] (char) 
+		{\footnotesize{#1}};}}
+\newcommand{\boldcircled}[1]{\notecircle{\textbf{#1}}}
+
+\newcommand*\notesquared[1]{\tikz[baseline=(char.base)]{
+		\node[shape=rectangle,draw,inner sep=2pt, thick] (char) 
+		{\footnotesize{#1}};}}
+\newcommand{\boldsquared}[1]{\notesquared{\textbf{#1}}}
+
+%=====================================================
+% Table column types
+% https://tex.stackexchange.com/a/12712
+%=====================================================
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+

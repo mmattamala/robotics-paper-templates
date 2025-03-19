@@ -1,0 +1,141 @@
+% Robustify glossaries for captions
+\robustify{\gls}
+
+
+\glssetcategoryattribute{acronym}{indexonlyfirst}{true}
+
+% This is needed so the acronyms are expanded the first time they are used in the text
+\setabbreviationstyle[acronym]{long-short}
+
+% Command to print a glossary list if required.
+% Print glossary terms in text using \gls{term}
+% Print glossary terms in tables using \acrshort{term}
+
+% Reenable these commands if printing the glossary
+%\makenoidxglossaries % to disable page indices in the glossary
+%\renewcommand{\glossarysection}[2][]{} % remove the "Glossary" title.
+
+%\glsdisablehyper % to disable hyperlinks on all glossary entries.
+
+% The lines below fix the hyperlinks in the abbreviations
+\glssetcategoryattribute{acronym}{nohyperfirst}{true}
+\renewcommand*{\glsdonohyperlink}[2]{{\glsxtrprotectlinks \glsdohypertarget{#1}{#2}}}
+
+% A
+\newacronym{ape}{APE}{Absolute Pose Error}
+\newacronym{apf}{APF}{Artificial Potential Field}
+\newacronym{als}{ALS}{Aerial Laser Scanning}
+
+% B
+
+
+% C
+\newacronym{chomp}{CHOMP}{Covariant Hamiltonian Optimization for Motion Planning}
+\newacronym{cpm}{CPM}{Camera Performance Model}
+\newacronym{cvar}{CVaR}{Conditional Value-at-Risk}
+
+% D
+\newacronym{darpa}{DARPA}{Defense Advanced Research Projects Agency}
+\newacronym{dbh}{DBH}{Diameter at Breast Height}
+\newacronym{dbi}{DBI}{Distance Between Interventions}
+\newacronym{dof}{DoF}{Degrees of Freedom}
+\newacronym{ddp}{DDP}{Differential Dynamic Programming}
+\newacronym{dss}{DSS}{Decision Support System}
+
+% E
+
+
+% F
+\newacronym{fov}{FoV}{Field-of-View}
+\newacronym{fmm}{FMM}{Fast Marching Method}
+
+% G
+\newacronym{gd}{GD}{Gradient Descent}
+\newacronym{gdf}{GDF}{Geodesic Distance Field}
+\newacronym{gn}{GN}{Gauss-Newton}
+\newacronym{gps}{GPS}{Global Positioning System}
+\newacronym{gpmp}{GPMP}{Gaussian Process Motion Planner}
+\newacronym{gpu}{GPU}{Graphics Processing Unit}
+
+% H
+\newacronym{hdr}{HDR}{High Dynamic Range}
+
+% I
+\newacronym{icp}{ICP}{Iterative Closest Point}
+\newacronym{imu}{IMU}{Inertial Measurement Unit}
+\newacronym{isam2}{iSAM2}{Incremental Smoothing and Mapping}
+\newacronym{isp}{ISP}{Image Signal Processor}
+
+% J
+
+% K
+\newacronym{komo}{KOMO}{k-Order Motion Optimization}
+
+% L
+\newacronym{lagr}{LAGR}{Learning Applied to Ground Vehicles}
+\newacronym{lhs}{LHS}{Left-hand Side}
+\newacronym{lidar}{LiDAR}{Light Detection and Ranging}
+\newacronym{lm}{LM}{Levenberg-Marquardt}
+\newacronym{lpc}{LPC}{Locomotion PC}
+\newacronym{ls}{LS}{Least Squares}
+
+% M
+\newacronym{map}{MAP}{Maximum A Posteriori}
+\newacronym{mdbi}{MDBI}{Mean Distance Between Interventions}
+\newacronym{mls}{MLS}{Mobile Laser Scanning}
+\newacronym{mpc}{MPC}{Model Predictive Control}
+\newacronym{mtbi}{MTBI}{Mean Time Between Interventions}
+
+% N
+\newacronym{nls}{NLS}{Non-linear Least Squares}
+\newacronym{npc}{NPC}{Navigation PC}
+
+% O
+\newacronym{opc}{OPC}{Operator PC}
+
+% P
+\newacronym{pnp}{PnP}{Perspective-n-Points}
+\newacronym{prm}{PRM}{Probabilistic Roadmap}
+\newacronym{pte}{PTE}{Pose Tracking Error}
+
+% Q
+
+% R
+\newacronym{rgb}{RGB}{Red-Green-Blue}
+\newacronym[\glsshortpluralkey=RMPs,\glslongpluralkey=Riemannian Motion Policies]{rmp}{RMP}{Riemannian Motion Policy}
+\newacronym{rl}{RL}{Reinforcement Learning}
+\newacronym{rpe}{RPE}{Relative Pose Error}
+\newacronym{rmse}{RMSE}{Root Mean Square Error}
+\newacronym{rrt}{RRT}{Rapidly-exploring Random Tree}
+\newacronym{ros}{ROS}{Robot Operating System}
+
+% S
+\newacronym{sam}{SAM}{Smoothing and Mapping}
+\newacronym{sdf}{SDF}{Signed Distance Field}
+\newacronym{sfm}{SfM}{Structure-from-Motion}
+\newacronym{slam}{SLAM}{Simultaneous Localization And Mapping}
+\newacronym{sgd}{SGD}{Stochastic Gradient Descent}
+
+% T
+\newacronym{tbi}{TBI}{Time Between Interventions}
+\newacronym{to}{TO}{Trajectory Optimization}
+\newacronym{tof}{ToF}{Time-of-Flight}
+\newacronym{tls}{TLS}{Terrestrial Laser Scanning}
+\newacronym{tsif}{TSIF}{Two-State Information Filter}
+
+% U
+\newacronym{ugv}{UGV}{Unmanned Ground Vehicle}
+\newacronym{urdf}{URDF}{Unified Robot Description Format}
+
+
+% V
+\newacronym{vtr}{VT\&R}{Visual Teach and Repeat}
+\newacronym{vit}{ViT}{Visual Transformer}
+
+% W
+
+% X
+
+% Y
+
+% Z

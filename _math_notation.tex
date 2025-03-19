@@ -1,0 +1,86 @@
+% This file should only define math operators
+
+% Operators
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\matrixSE}[2]{
+	\begin{bmatrix}
+		#1  &  #2 \\
+		0_{1\times3} &   1
+	\end{bmatrix}
+}
+
+% Euclidean space
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+
+%Frames
+\newcommand{\I}{\mathtt{I}} % Inertial (odom)
+\newcommand{\W}{\mathtt{W}} % World
+\newcommand{\M}{\mathtt{M}} % Map
+\newcommand{\B}{\mathtt{B}} % Base
+\newcommand{\C}{\mathtt{C}} % Camera
+\newcommand{\F}{\mathtt{F}} % Footprint
+\newcommand{\Sensor}{\mathtt{S}} % Footprint
+
+% Notation
+\newcommand{\nmat}[1]{\mathbf{#1}} % Notation for matrices
+\newcommand{\nvec}[1]{\mathbf{#1}} % Notation for vector
+\newcommand{\nset}[1]{\mathcal{#1}} % Notation for sets/manifolds
+
+\newcommand{\nest}[1]{{#1}^{\star}} % Estimate/solution of the optimisation
+\newcommand{\nlin}[1]{\bar{#1}} % Linearisation point
+
+\newcommand{\scalar}[2]{{_#2} {#1} } % Notation for a point
+\newcommand{\point}[2]{{_#2} \nvec{#1} } % Notation for a point
+\newcommand{\rotation}[2]{\nmat{R}_{#1 #2}} % notation for a rotation matrix
+\newcommand{\pose}[2]{\nmat{T}_{#1 #2}} % Notation for a pose matrix
+\newcommand{\identity}{\nmat{I}} % Identity matrixq
+\newcommand{\Kmat}[2]{\nmat{K}_{#1 #2}} % Notation for a calibration matrix
+
+\newcommand{\loss}[1]{\mathcal{L}_{#1}}
+
+% Jacobians
+\newcommand{\jac}[1]{\nmat{J}_{#1}}
+\newcommand{\grad}[1]{\nabla #1}
+
+% Lie groups
+\newcommand{\SOn}{\textrm{SO}(n)}
+\newcommand{\SOtwo}{\textrm{SO}(2)}
+\newcommand{\SOthree}{\textrm{SO}(3)}
+\newcommand{\SEn}{\textrm{SE}(n)}
+\newcommand{\SEtwo}{\textrm{SE}(2)}
+\newcommand{\SEthree}{\textrm{SE}(3)}
+
+% Least squares
+\newcommand{\lsq}[2]{\lVert \, #1 \, \rVert^{2}_{#2}}
+\newcommand{\lsqexp}[1]{#1^{\top}\, #1}
+\newcommand{\lsqexpcov}[2]{#1^{\top}\, #2^{-1}\, #1}
+\newcommand{\lsqrobust}[2]{\rho \left( #1 \right) }
+
+% Distributions
+\newcommand{\gaussian}[2]{\mathcal{N}\left( #1, #2 \right)}
+\newcommand{\gaussiannorm}[2]{\sqrt{ \left(2 \pi \right)^{#2} \det{#1} }}
+\newcommand{\fullgaussian}[3]{ \frac{1}{ \gaussiannorm{#2}{#3}} \exp{ \left( #1 \right)} }
+
+% Other stuff
+% Legacy
+\newcommand{\subarrow}[1]{
+	\mathord{
+		\renewcommand{\arraystretch}{0}
+		\begin{array}[t]{@{}c@{}l@{}}
+			#1\\[2pt]
+			\hspace{-2pt}\scriptstyle\longrightarrow
+		\end{array}
+		\kern\scriptspace
+	}
+}
+
+% WVN commands
+\newcommand{\embed}[1]{\mathbf{f}_{#1}}
+\newcommand{\travloss}{\loss{trav}}
+\newcommand{\recoloss}{\loss{reco}}
+\newcommand{\temploss}{\loss{temp}}
+\newcommand{\trav}[1]{{\tau}_{#1}}
+\newcommand{\travb}[0]{{\tau}_{b}}
+\newcommand{\travthr}[0]{{\tau}_{\text{thr}}}
