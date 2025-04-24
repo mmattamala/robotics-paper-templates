@@ -1,0 +1,784 @@
+% This reponse letter was taken from Vilens' paper
+% The original files are by David Wisth
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[margin=3cm]{geometry}
+\pagenumbering{gobble} % remove page numbering
+\usepackage[dvipsnames]{xcolor}
+\renewcommand{\mkbegdispquote}[2]{\color{Blue}}
+
+%\usepackage{todonotes}
+\usepackage[final]{pdfpages}
+\setlength\parindent{0pt} % remove indent on paragraphs
+
+\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{siunitx} 
+
+\usepackage{outlines}
+
+\input{_math_notation.tex}
+
+\usepackage[color=yellow]{todonotes}
+\presetkeys{todonotes}{inline}{}
+%\newcommand\todo[1]{\textbf{[TODO: #1}]}
+
+%opening
+\title{Authors' Response to Editorial Staff and Reviewers}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-5ex}
+
+\begin{displayquote}
+Dear Mr. Mat\'ias Mattamala,
+
+Your paper
+
+21-2269
+
+"An Efficient Locally Reactive Controller for Safe Navigation in Visual
+Teach and Repeat Missions" by Mat\'ias Mattamala, Nived Chebrolu, Maurice Fallon
+
+Submission for RA-L and ICRA submitted to the IEEE Robotics and Automation 
+Letters (RA-L) has been reviewed by the Associate Editor and selected 
+Reviewers. The reviews of the paper are attached.
+
+On the basis of the reviewers' ratings and comments, we decided that your paper 
+cannot be published in the Letters in the present form. 
+However, you are encouraged to rewrite and resubmit a revised version
+of your work addressing all editorial concerns.
+
+[Deleted instructions related to resubmission]
+
+If you have any related concern, do not hesitate to contact me.
+
+Sincerely,
+
+Eric Marchand\\
+Editor (Vision and Sensor-Based Control)\\
+IEEE Robotics and Automation Letters
+\end{displayquote}
+
+Dear Prof. Marchand,\\
+\\
+We would like to thank all the editors and reviewers for the time taken 
+to review this paper and providing many valuable comments and suggestions.
+We have addressed these comments in our resubmission and a 
+document showing the difference between the original and revised versions of 
+the paper is appended to this response.\\
+\\
+Yours sincerely,\\
+\\
+Mat\'ias Mattamala (on behalf of the authors)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section*{Response to Editor}
+
+\begin{displayquote}
+  All the Reviewers agree that the paper is interesting and very relevant
+to the field. Nonetheless, some concerns have been raised, in
+particular: 
+
+- The experimental section does not provide any comparison with
+state-of-the-art works. The authors are encouraged to compare their
+approach against other baselines, or at least provide a justification
+about why their work is theoretically superior to others;
+\end{displayquote}
+
+First of all, thanks for the excellent summary of the main concerns. 
+\begin{outline}[enumerate]
+\1 Regarding  the baselines, we have added comparisons to three local 
+planner/controller baselines:
+
+	\2 Sampling-based local planner adapted from open code by Zhang et 
+	al. [37].
+	\2 Potential field controller, which is a special case of our proposed 
+	controller (\emph{Obstacle-free Goal Reaching RMP} and \emph{Obstacle 
+	Avoidance RMP} with fields always enabled).
+	\2 Geodesic Distance Field (GDF) based controller, which is another 
+	special case (\emph{Obstacle-free Goal Reaching RMP} and \emph{GDF-based 
+	Goal Reaching RMP} with both fields always enabled).
+
+\1 We compared the methods in simulation recording a reference path as done 
+in a Visual Teach and Repeat scheme. Then we introduced some artificial 
+obstacles close to the recorded path, similarly to the Experiment 1 reported in 
+the paper in the indoor environment. 
+\1 Then we ran each controller 10 times using a 
+moving look-ahead goal as input to record the tracked trajectories and number 
+of collisions.
+\1 Our results show that our approach allows the robot to track the trajectory 
+staying away from obstacles, while other methods perform poorly, frequently 
+hitting obstacles or getting stuck in local minima.
+\1 The experiment was also added to the supplementary video to illustrate the 
+previous points.
+\end{outline}
+
+%\begin{outline}[enumerate]
+%	\item Added comparisons to three baseline approaches 
+%	(a) Sampling based approach (add cite)
+%	(b) Potential field based controller (add cite),
+%	(c) Geodesic distance field (GDF) based controller (add cite)
+%	\item Provide a short summary of the baseline experiment results (1-2 
+%lines).
+%\end{outline}
+
+\begin{displayquote}
+- There are some concepts and design choices that should be better
+explained and motivated;
+\end{displayquote}
+
+We have made some clarifications to address the concerns about the parameters, 
+basic RMP concepts, and motivation for the framework. In particular:
+\begin{outline}[enumerate]
+	\1 We have added a new subsection (Sec. III.A) to explain basic RMP 
+	concepts.
+	\1 We have also improved the flow of information of Sec. III to explain our 
+	motivations to use this framework.
+	\1 Sec. IV adds more details about our design and testing choices.
+\end{outline}
+
+\begin{displayquote}
+- Some theoretical aspects of the approach should be discussed (see, in
+particular, Reviewer 4);
+\end{displayquote}
+
+\begin{outline}[enumerate]
+	\1 We have added an explanation for the choice of the tunable parameters 
+	used by the controller in Sec. IV.
+	\1 In this paper our focus has been in the application of the 
+	RMP-based controller to provide safe local navigation, and have provided 
+	experimental results in simulation as well as in real-world scenarios. A 
+	further theoretical analysis of the stability and convergence properties 
+	was beyond the scope of this paper.
+	\1 Nevertheless, we have added a new Section (III.A) to discuss the RMP 
+	framework in a more general way, and we have pointed related literature 
+	that has discussed some of its theoretical properties [4],[30].
+\end{outline}
+
+\begin{displayquote}
+- The contributions of the work need to be clarified.
+\end{displayquote}
+
+\begin{outline}[enumerate]
+	\1 The main contribution of this work is the design, implementation and 
+	deployment of a reactive controller for navigation tasks.
+	\1 In particular, we have shown how to design a RMP controller that 
+	exploits local maps available in legged robots, which is able to generate 
+	reactive behaviors on a CPU.
+	\1 These contributions have been reviewed and stated in the introduction 
+	section.
+	\1 Further, we have provided further explanation in the related works 
+	section by placing our work in the context of other related methods in the 
+	literature to make the motivation, differences, and contributions more 
+	evident.
+\end{outline}
+
+%\begin{displayquote}
+%Therefore, I believe that this paper should be revised considering the
+%Reviewers' comments.
+%\end{displayquote}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section*{Response to Reviewer \#2 (ID 164917)}
+
+\begin{displayquote}
+	The paper presents an RMP-based approach to ensuring safe local
+	movement for teach and repeat robots during their repeat traverse. The
+	approach is (theoretically) generalized to any type of robot, rather
+	than being specific to legged robots, and relies on some fairly strong
+	(find to be out-of-scope for this paper) assumptions around terrain
+	maps and other information. The system is set up to be fairly lean
+	compute-wide and to run in real time on CPU. Some experiments are
+	presented in simulation and in a short abandoned mine traverse. The
+	paper is generally quite well written and presented and nicely concise
+	in presenting the core theory.
+
+	It's a little unclear throughout the paper what is simply standard best
+	practice (e.g. in painting) and what is a new contribution specific to
+	this paper. Presenting the key steps like in painting is fine for
+	self-containedness of the paper of course.
+\end{displayquote}
+
+We thanks for the accurate summary and kind words.
+
+\begin{outline}[enumerate]
+	\1 As mentioned earlier, we have emphasized the contributions of our 
+	work in the introduction. 
+	\1 Inpainting is important in our pipeline because the later stages 
+	require a well-defined image, so we considered it relevant for 
+	self-containedness as it was pointed out.
+	\1 The choice of in-painting technique typically depends on the noise 
+	characteristics of the sensor and properties of the surface (eg. 
+	reflectivity). In this paper, we use an inpainting techinique based on the 
+	Fast Marching method presented by Telea [31], which is available in OpenCV. 
+	\1 We preferred an inpainting technique because it produced a reasonable 
+	guess for the unknown space at fast speed. We tried more advanced methods 
+	(Gaussian Process regression) but they were too slow.
+\end{outline}
+
+
+\begin{displayquote}
+	The RMP approach nicely combines various conflicting goals and
+	constraints, which is neat.
+	
+	Most of the experiments focus on illustrative and qualitative
+	evaluation and some parameter examination of the effects of various
+	system configurations - so internal analysis. There's no benchmarking
+	comparison to complete other methods, which admittedly would be
+	difficult in this type of application. However, it would still help to
+	be a little more explicit about what the current standards of
+	performance are, and why what is presented here represents a
+	substantial step beyond current capability in some (can be narrow)
+	manner (compute, robustness etc...)
+	
+	For example, while not exactly teach and repeat, a bunch of robots just
+	impressively solved similar problems in the DARPA SubT challenge (which
+	this work may be associated with). How is what is presented here better
+	or adds contributions beyond all that work? A direct comparison and
+	re-implementation of those competitor methods (many of which probably
+	aren't available) is probably unreasonable here, but there is likely
+	some middle ground that provides some better semi-quantitative
+	experimental comparison (even in a somewhat meta manner) of what the
+	method provides experimentally over those others. 
+\end{displayquote}
+
+
+\begin{outline}[enumerate]
+	\1 The lack of comparison to baseline methods has been pointed out in all
+	the reviews. To address this aspect of the paper, we have now added a new 
+	section for analyzing the performance with respect to other approaches.
+	
+	\1 In order to perform the comparison, we designed a simulated 
+	environment (Fig. 11) with tight corners and varying corridor widths. The 
+	environment has been designed in a manner that the different controllers 
+	can be evaluated in challenging situations where a locally safe control 
+	becomes critical.
+	
+	\1 We compared our RMP based controller against (a) FALCO-based~[31] 
+	local planner (which is DARPA SubT related), (b) Potential field 
+	controller, and (c) GDF based controller. This was added to Sec. IV and the 
+	video.
+	
+	\1 Our experiments showed a consistent behavior of our proposal compared to 
+	our real experiments, and the advantages of using potential field-like 
+	methods when performing omnidirectional motion without requiring more 
+	expensive planners.
+\end{outline}
+
+\begin{displayquote}
+	Further work - how much could this framework be adapted beyond the
+	teach and repeat context to general environment exploration, and would
+	it retain is claimed benefits? I can't see anything obvious making this
+	particularly limited to repeat in T\&R - frontier-based exploration with
+	a local elevation map from LIDAR etc... should be enough to work in
+	other applications?
+\end{displayquote}
+
+\begin{outline}[enumerate]
+	\1 Indeed, while the controller was developed inspired by VT\&R-specific 
+	requirements, the controller presented in this work can be used out that 
+	context as well, since it only requires (1) a state estimate in a fixed 
+	frame, 
+	(2) an elevation map, and (3) a low-level controller that receives twists 
+	commands.
+	\1 For example, one of the ways we use this controller in our lab is simply 
+	as a safety layer while an operator joysticks the robot.
+	This controller ensures that even if the human operator provides a bad 
+	control input which would result in a collision, the safety controller 
+	would ensure that such a command is not executed. This greatly improves the 
+	usage of the platform in general.
+\end{outline}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section*{Response to Reviewer \#3 (ID 164919)}
+
+\begin{displayquote}
+	The main contribution of the presented paper is an obstacle avoidance
+	controller which uses Riemannian Motion Policies. Other contributions
+	are the integration of said controller into a visual teach and repeat
+	system and its evaluation on the ANYmal C quadruped.
+
+	The authors also claim the use of vector field representations for
+	navigation as a contribution, but such representations have been used
+	for navigation before, as the authors correctly state in the Related
+	Work section [17, 25, 26, 27]. Consequently, this should be removed
+	from the list of contributions.
+\end{displayquote}
+
+
+\begin{outline}[enumerate]
+	\1 Vector field representations have been effectively used for navigation 
+	tasks in the past, but mainly to replace planners and in offline settings.
+	\1 In this work, our contribution has been in efficiently computing 
+	these vector fields online, and combining them in a RMP based controller 
+	which runs at 10 Hz on a CPU.
+	\1 To avoid the impression that the vector field representations themselves 
+	are a contribution of this work, we have re-worded the second contribution 
+	sentence in the Introduction section.
+\end{outline}
+
+\begin{displayquote}
+	The Related Work section mentions important and relevant work and
+	generally places the presented paper well in the existing literature.
+	However, when distinguishing this work from Bista et al. [30] the
+	authors claim that taking into account 3D geometry is the main unique
+	feature. This, however, is not the case. The problem formulation of the
+	Riemannian Motion Policy (RMP) is in SE2 and navigation cues are taken
+	from 2-dimensional grid maps. The presented paper only uses 3D geometry
+	(which actually isn’t really 3D, because it’s a 2.5D height map) to
+	compute traversability values, which are thresholded to obtain an
+	obstacle map. This is practically the same as [30], where they use
+	depth images to compute an occupancy map around the robot. Having said
+	this, this does not invalidate the contributions mentioned above, but
+	the authors should more accurately and more clearly distinguish the
+	presented RMP formulation from the heuristic on rotational velocity
+	presented by Bista et al. [30]. 
+\end{displayquote}
+
+Thanks for this observation. We have done a few modifications to address this:
+\begin{outline}[enumerate]
+	\1 We have reworded that sentence to make the differences with Bista et al. 
+	more explicit.
+	\1 In particular, at the localization level, our representations and 
+	localization strategies are different. We use topo-metric, with explicit 
+	pose estimation, while they use purely topological and a visual-servoing 
+	strategy.
+	\1 In terms of the controller, as mentioned by the reviewer, Bista et al. 
+	uses a heuristic to combine visual servoing's output with the A$\star$ 
+	plan, while we exploit the RMP framework to combine different desired 
+	behaviors in a principled way.
+\end{outline}
+
+
+\begin{displayquote}
+	The paper is generally well written and well organized. The
+	introduction motivates the work well and clearly states the scope and
+	purpose of the presented method. Figures are clear and of high quality.
+	Some minor grammatical errors should be fixed (e.g. missing words,
+	“quadruped robot” $\rightarrow$ “quadrupedal robot”).
+	The attached video illustrates the method very well (also, cute carrot
+	:-) ).
+\end{displayquote}
+
+Thanks for this feedback, it is very much appreciated. 
+\begin{outline}[enumerate]
+	\1 We have corrected the typos mentioned in the reviews.
+	\1 We also did another round of proof-reading and corrections.
+\end{outline}
+ 
+
+\begin{displayquote}
+	The paper is generally technically sound, however, a few issues and
+	questions do arise:
+	
+	The authors claim “In an environment without obstacles, the GDF would
+	suffice to generate a motion policy to guide the robot towards the
+	goal. However, just relying on the GDF is insufficient and other
+	priorities such as moving in a certain direction or avoiding obstacles
+	need to be considered.”. However, the computation of the GDF already
+	takes traversability information, and therefore obstacles, into
+	account. The use of additional SDF terms for obstacles avoidance
+	instead of just inflating the obstacle map, should be motivated better. 
+\end{displayquote}
+
+We agree that this sentence was confusing and have updated the explanation in Sec. III.
+We address the use of SDF terms for obstacle avoidance in the following way:
+\begin{outline}[enumerate]
+	\1 We agree that the GDF implicitly takes into account the obstacles. 
+	However, it is only defined for the free space but it has discontinuities 
+	near the obstacles, which results in a gradient that is not smooth.	
+	\1 Additionally, its gradient does not necessarily guide the robot 
+	to safer areas, but just tries to \emph{push} the robot toward the goal.
+	\1 Inflating and smoothing the map is not straightforward for elongated 
+	robots because the robot is longer along one axis, so there can still be 
+	feasible solutions if the robot rotates in place. 
+	\1 By formulating obstacle avoidance as a result of an independent field (here by SDF term), 
+	we have more flexibility to control the desired behavior.
+	\1 Lastly, in the new baselines experiment we have shown the resulting 
+	trajectory when using a GDF-only approach.
+\end{outline}
+
+\begin{displayquote}
+	In the first experimental run, the carrot point is set 0.7m from the
+	robot, however the $d_c$ cutoff is 1m. Therefore, it seems like during
+	this run the GDF is never active, since GDF is also disabled close to
+	the goal. Is it required then, since the path tracking performance is
+	similar to later runs with 1.5m carrot point distance? You mention
+	speed as the main difference, was there any other qualitative
+	difference in behavior?
+\end{displayquote}
+
+This is an important observation that we would like to clarify.
+\begin{outline}[enumerate]
+	\1 The distances $d_c$ are not \emph{hard} cuttofs but soft, since they are 
+	the result of a logistic weighting (Tab. I, footnote).
+	\1 Consequently, moving the carrot closer does not disable the GDF 
+	entirely, but it gives it a lower weight compared to the Obstacle-free Goal 
+	Reaching term.
+	\1 As a result, the robot tries to minimize the Euclidean distance to the 
+	goal instead of the geodesic one, while still having some geodesic terms 
+	pulling the robot around the obstacle.
+	\1 Without the contribution of the GDF term, the controller would locally 
+	behave as a potential field controller and would get stuck in the obstacle 
+	if the forces cancel each other.
+	\1 However, since there is still a GDF term, we observed that when the robot 
+	gets close to an obstacle, the GDF term still conservatively ``pulls'' 
+	the robot around the obstacle. This also explains the lower average speed 
+	for the \emph{Forward1} experiment in Sec. IV C.
+\end{outline}
+
+\begin{displayquote}
+	Why does the goal-reaching term have a translational component?
+	Wouldn’t the GDF term behave equally to the goal-reaching term in an
+	obstacle-free environment and perform the same job? Why do you need to
+	switch then, instead of just enabling a rotational goal-reaching
+	component? The simulation experiment section states that the only issue
+	with GDF is the lack of rotational component.
+\end{displayquote}
+
+\begin{outline}[enumerate]
+	\1 This observation is correct, and we could effectively change the 
+	\emph{Obstacle-free Goal Reaching} term for an orientation-only RMP to 
+	achieve a similar behavior if we want to simplify the controller.
+	\1 However, switching the RMPs via metrics is still required, since it is 
+	desired to walk forward most of the time and only correct orientation to 
+	match the goal when the robot is close.
+\end{outline}
+
+\begin{displayquote}
+	Table 1 states that the heading correction is only active close to the
+	goal. Shouldn’t it be the opposite? Far away from the goal you want to
+	align with the motion direction, close to the goal you want to have the
+	goal direction.
+\end{displayquote}
+
+Thanks for spotting this, it was a typo. It has been corrected in the new 
+version.
+
+\begin{displayquote}
+	What are the effects of damping and regularization? How does the method
+	perform without them? How do you choose the weighting constants $k_b$ and 	
+	s?
+\end{displayquote}
+
+\begin{outline}[enumerate]
+	\1 The damping term is usually used in RMP literature [4],[30] to control 
+	the 
+	acceleration profile and avoid overshooting. In particular, the quotient 
+	$k_{\text{goal}} / k_{\text{damping}}$ determines the maximum speed 
+	assuming no other accelerations are considered.
+	\1 The regularization term puts a check on the difference in acceleration 
+	at time $t$ and $t-1$, resulting in a smoother control without large jerks, 
+	as well as avoiding ill-conditions in the optimization during experiments 
+	with different RMPs configurations.
+	\1 We obtain the weighting constant $k_b$ as well as other gains used in 
+	the controller with a line search performed offline. We have added a 
+	sentence in the paper to state this.
+\end{outline}
+
+\begin{displayquote}
+	The paper claims safe navigation. How are the obstacle avoidance RMPs
+	guaranteed to be of higher importance than things like goal-reaching
+	and regularization.
+\end{displayquote}
+
+\begin{outline}[enumerate]
+	\1 While we do not provide any formal guarantees for the controller, we 
+	have tested the approach in challenging environments, both in simulation 
+	as well as in real-world tests.
+	\1 As we shown in the new Experiment 3, we leverage the effect of the 
+	state-dependent Riemannian metrics with the reactivity of the controller to 
+	dynamically change the desired behavior.
+	\1 As we mentioned before, the parameters were chosen via line search in 
+	simulation, and validated when we deployed the system.
+	\1 Still, our implementation allows to easily change parameters on the fly, 
+	which allows easy re-tuning of the parameters when testing the system in 
+	new environments.
+	%and have not observed any situations in which
+	%the robot collided with obstacle as a result of 
+	%thgoal-reaching/regularization 
+	%forces dominating. 
+	%\1 In particular, 
+	%\1 In addition to the Riemannian metric which ensures the forces are 
+	%scaled 
+	%appropriately based on the distance 
+	%to the obstacle, we also choose the gains for each RMP via a line search, 
+	%which provides desired behavior for the robot. 
+\end{outline}
+
+\begin{displayquote}
+	How does this approach compare to other, similar methods which use the
+	same environment representation (SDF, GDF) but without RMPs. The
+	experimental section demonstrates that this approach works, but it is
+	hard to judge whether other methods could perform similarly.
+\end{displayquote}
+
+We have added a new experiment (Sec. IV.D) to compare against a potential field 
+controller and a GDF-only controller, which is also shown in the supplementary 
+video.
+
+\begin{displayquote}
+	It is difficult to judge how good or bad the path tracking error is.
+	First, because there is a minimal tracking error due to the presence of
+	obstacles. A “minimal error” or similar could better help judge the
+	performance of your work. Second, comparing to other methods would be
+	helpful to judge whether your method is not only safer, but also has
+	better tracking accuracy.
+\end{displayquote}
+
+We have added a few sentences to clarify this:
+
+\begin{outline}[enumerate]
+	\1 Sec. III.D briefly discusses the expected performance of the VT\&R 
+	system as reported in our previous work [5].
+	\1 Experiment 1 briefly discusses the PTE obtained in the experiment 
+	compared to the original VT\&R.
+	\1 In general the system's tracking accuracy was within the expected bounds 
+	but also being able to stay in safe areas without collisions and properly 
+	recovering after losing track of the reference path.
+\end{outline}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section*{Response to Reviewer \#4 (ID 164921)}
+
+\begin{displayquote}
+	This paper develops a reactive control scheme for VT\&R missions. The
+	controller acts as a safety filter on the reference trajectories
+	computed by the VT\&R algorithm, relying on the information provided by
+	two vector-field representations of the local environment, which are
+	combined into a suitable RMP formulation. The controller is validated
+	experimentally on a robot in two real-world environments. Overall, the
+	paper is well-written. The method is interesting and the obtained
+	results seem to be promising. However, some aspects of the presentation
+	should be further clarified (see detailed comments below) and the paper
+	lacks a comparison with other local guidance methods (e.g., local
+	planners).
+	
+	Detailed comments:
+	Fig.2: Please close the loop with the environment.
+\end{displayquote}
+
+Thanks for the valuable feedback. Regarding the comment, we agree that to 
+properly illustrate the closed-loop system we should close the loop in the 
+figure, but it was designed this way due to space limitations.
+
+\begin{displayquote}
+	Section III.B: The discussion here is too general and fails to
+	provide a clear link with the control system architecture in Fig. 2 and
+	the RMPs in Table I. Please expand this section a bit. For consistency,
+	consider replacing the notation $v_B$ and $a_B$ with $\dot{x}_B$ and
+	$\ddot{x}_B$. Perhaps, Section III.C can be moved before this section (it
+	describes an input to the controller).
+\end{displayquote}
+
+Thanks for raising this concern. We have done a few modifications to connect 
+the ideas better and improve the presentation:
+\begin{outline}[enumerate]
+	\1 We reordered the explanation of Figure 2 at the start of Sec. III.
+	\1 We added a new section (Sec. III.A) to explain RMPs and the 
+	motivation to use them as suggested. 
+	\1 The explanation in Sec. III. C (formerly III.B) now is focused in the 
+	specific details to implement the RMP framework, connecting it with Fig. 
+	2, Tab. I and the rest of the pipeline.
+	\1 Regarding the notation, in the general formulation (Eq. 1) we 
+	use $\mathbf{x}$, $\mathbf{\dot{x}}$, and $\mathbf{\ddot{x}}$ to express a 
+	generic state, velocity and acceleration. In the formulation we implemented 
+	(Eq. 2) we changed the 
+	notation to $\notationMatrixFrame{T}{}{\notationFrame{IB}}$ for the state, 
+	$\notationVectorFrame{v}{B}{}$ for the velocity, and 
+	$\notationVectorFrame{a}{B}{}$ for the acceleration to make explicit that 
+	the state lies in $\SEtwo$ while the others are in $\Rn{3}$, avoiding 
+	notation like $\notationMatrixFrame{\dot{T}}{}{\notationFrame{IB}}$ which 
+	could be misleading.
+	
+\end{outline}
+
+\begin{displayquote}
+	The proposed architecture is validated empirically in Section IV, but
+	many theoretical (and practically relevant) issues remain largely
+	unaddressed. Does the control system enforce closed-loop stability
+	(under reasonable assumptions)? Are collision avoidance and convergence
+	to the goal guaranteed? How are the parameters $d_{carrot}$ and $d_c$ tuned?
+	Please add some comments on these points.
+\end{displayquote}
+
+
+\begin{outline}[enumerate]
+	\1 We have added an explanation for the choice of the tunable parameters 
+	used by the controller in Sec. IV.
+	\1 In this paper our focus has been in the application of the 
+	RMP-based controller to provide safe local navigation, and have provided 
+	experimental results in simulation as well as in real-world scenarios. A 
+	further theoretical analysis of the stability and convergence properties 
+	was beyond the scope of this paper.
+	\1 Nevertheless, we have added a new Section (III.A) to discuss the RMP 
+	framework in a more general way, and we have pointed related literature 
+	that has discussed  some of its theoretical properties [4],[30].
+\end{outline}
+
+\begin{displayquote}
+	The impact of the VT\&R signal quality on the overall control
+	performance should be further investigated.
+\end{displayquote}
+
+\begin{outline}[enumerate]
+	\1 The VT\&R system builds upon our previous work (Ref. [5]), which was 
+	mainly evaluated in obstacle-free environments. We showed 
+	that the path tracking system achieved less than \SI{10}{\centi\meter} 
+	error w.r.t the reference path on average.
+	\1 We have added a sentence stating this in the paper clarify the expected 
+	accuracy of the VT\&R signal.
+	\1 We also briefly discuss this in Section IV, Experiment 1.
+\end{outline}
+
+\begin{displayquote}
+	Page 2, end of first column: please add a reference to Geodesic
+	Distance Fields (GDF).
+\end{displayquote}
+
+We added a reference as requested.
+
+\begin{displayquote}
+	Section III.A, point 4: "a global minima", does this refer to a
+	unique global minimum?
+\end{displayquote}
+
+Thanks for spotting this typo, it has been fixed.
+
+\begin{displayquote}
+	Table I, fourth column (obstacle avoidance), fourth row (when
+	enabled?): from my understanding, this entry should be changed to
+	"always".
+\end{displayquote}
+
+\begin{outline}[enumerate]
+	\1 The table is correct by stating that the \emph{Obstacle Avoidance} RMPs 
+	are enabled only when the robot is closer than a certain distance.
+	\1 If they were always enabled, the resulting controller would behave 
+	similarly to a potential field controller, and could consequently generate 
+	local minima as a result of obstacle forces pushing the robot away even 
+	when it is far, which is problematic when entering narrow passages.
+	\1 In contrast, by relying on a distance-enabled metric we can control the 
+	behavior of this repulsion forces in a more flexible way.
+	\1 This can be observed in the attached video, which includes new 
+	experiments and comparisons with potential field methods.
+\end{outline}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+\section*{Response to Reviewer \#8 (ID 167635)}
+
+\begin{displayquote}
+	The presents an efficient reactive collision avoidance system for safe
+	navigation for quadrupedal robots. More specifically, the system tries
+	to find a proper twist command from the given elevation map. The paper
+	approaches this by combining multiple potential fields using a
+	Riemannian Motion Policy framework, proposed by Ratliff et al. Then the
+	proposed algorithm is combined with the quadrupedal robot, Anymal-C,
+	and tested on indoor and cave navigation scenarios. The proposed
+	algorithm successfully manages to avoid collisions while closely
+	following the given path.
+
+	Surprisingly, I am not too positive about the paper, even with the
+	amazing hardware experiments, due to two main concerns. The first
+	concern is its novelty: the proposed algorithm framework with RMPs is
+	based on the existing work without any modification and never compared
+	against other baseline algorithms. Second, the paper presents many
+	concepts, such as VT\&R or RMPs, without any proper introductions, which
+	makes readers hard to follow. Particularly, RMPs seems to be a fairly
+	new concept introduced in 2018, which should not be expected to know.
+	Therefore, I would like to recommend another round of revision to this
+	paper, although it has many impressive results.
+\end{displayquote}
+
+Thanks for the feedback, we hope that the new modifications address the 
+concerns:
+\begin{outline}[enumerate]
+  \1 While the RMP approach has been used for several applications including 
+  	 navigation and control tasks [4],[30]
+	 our contribution in this paper has been in applying the framework to design an effective controller which leverages local
+	 perception to provide a safe navigation capability, as well as deploy and  
+	 evaluate its performance on a quadrupedal robot in real-world experiments. 
+  \1 In order to give the reader unfamiliar with RMP, we have improved our 
+  	 motivation to use RMPs in Sec. II., and attached one additional reference 
+  	 [30].
+  \1 Additionally, we added a new section (III.A) to briefly give a general 
+  	 overview of RMPs.
+  \1 Now the original explanation we had in Sec. III.C (formerly III.B) is 
+  	 focused on the specific details of our RMP implementation. 
+  \1 We hope that these new modifications improve the readibility of the paper 
+ 	 in spite of the strict page-limit that difficults a more detailed 
+ 	 introduction to RMPs.  
+\end{outline}
+
+
+\begin{displayquote}
+	I believe the idea of using potential fields to handle collision
+	avoidance is not a new idea, as also suggested in the paper. The paper
+	proposes a bit fancier formulation using RMP, but the core idea seems
+	the same (at least not well highlighted in the paper). To make the
+	matter worse, the algorithm is not compared with any existing
+	algorithms - I believe there will be a lot of collision avoidance
+	algorithms, even if we limit the scope to the potential fields based
+	approaches. I would suggest the authors take more in-depth analysis to
+	the given framework, such as ablation study.
+\end{displayquote}
+
+We have added a new experiment (Sec. IV, Experiment 3) to address this concern:
+
+\begin{outline}[enumerate]
+	\1 Comparisons are performed against a potential field method, a GDF-only 
+	approach, and a local planner that determines a path via collision checking 
+	and tracks it using a P controller.
+	\1 Due to page limits, we have added Fig. 11 to show the main findings of 
+	this experiment, and the full runs are shown in the supplementary video.
+	\1 We also added a discussion about the behaviors we observed for each 
+	method.
+\end{outline}
+
+\begin{displayquote}
+	Another main concern is about the exposition. The field of robotics is
+	very broad. But the authors used a few terms without explanation, such
+	as VT\&R and RMP. Particularly, I am concerned about the RMP which is a
+	relatively new idea introduced in 2018. I believe it is much safer to
+	assume that readers are not familiar with this. The introduction does
+	not convey the high level idea, and the explanation in Section III.B is
+	quite shallow. Fig. 5 is hard to interpret and not sure about its
+	message. Therefore, I believe the manuscript requires a major revision
+	to fix the current exposition issue.
+\end{displayquote}
+
+As we have mentioned in the second response, we have reorganized the exposition 
+of the method in Sec. III. We hope that this improves the readability of the 
+paper and as well as the understanding of the RMP framework considering the 
+space limitations.
+
+% \pagebreak
+% 
+% \section*{Changes to the Video}
+% 
+% Below are the amendments to the video:
+% \begin{itemize}
+% \end{itemize}
+
+\pagebreak
+
+\includepdf[pages=-]{diff.pdf}
+
+\end{document}
