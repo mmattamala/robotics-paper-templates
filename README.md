@@ -12,3 +12,6 @@ Repository with main resources and preamble files I use for papers
 - [ ] Fix math notation
 - [ ] Add comments for all the packages in the preamble
 - [ ] Make separate preamble for colors
+
+## Notes
+- The `caption` package usually breaks the original caption size of the IEEE packages
