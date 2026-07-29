@@ -1,0 +1,222 @@
+% We setup the document using the IEEE format. We don't want to change this usually
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  
+
+% We need to keep these commands to ensure that we can use the \thanks command
+% to write the affiliations at the bottom left
+\IEEEoverridecommandlockouts                              
+\overrideIEEEmargins                                      
+
+% We import the preamble
+\input{_preamble}
+
+% We define some macros to setup some inline comments
+% Colors here (dvipsnames): https://www.overleaf.com/learn/latex/Using_colors_in_LaTeX
+\newcommand{\matias}[1]{\textcolor{RubineRed}{\textbf{(Matias)}~#1}}
+
+% Setup Title
+\title{\LARGE \bf
+The title of my awesome paper}
+
+% Set authors
+\author{Author1$^{1}$, Author2$^{2}$, Author3$^{2}$, and Mat{\'i}as Mattamala$^{3}$
+%
+\thanks{$^{1}$ University of Cats \texttt{\{author1\}@ucats.ac.uk}} % one line per afiliation
+\thanks{$^{2}$ Dog University \texttt{\{author2, author3\}@dog.ac.uk}} % one line per afiliation
+\thanks{$^{3}$ University of Edinburgh \texttt{matias.mattamala@ed.ac.uk}} % one line per afiliation
+% Also to add funding sources
+\thanks{This research was funded by MyFellowship (grant MM/123456789)}
+} % Closing \title
+
+
+\begin{document}
+% Makes the title and list of authors
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+\matias{One brief sentence giving context}
+
+\matias{One sentence on the problem and why it is worth solving}
+
+\matias{One sentence introducing this work. Other sentence with main contributions}
+
+\matias{Two sentences with main results, highlighting some key numerical result or achievement}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1]}
+
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+\matias{First paragraph should give the \textbf{context}}\\
+Robots are becoming a promising assistive platform in different societal context...
+
+\matias{Second paragraph should talk about the \textbf{problem} that we are concerned about, given the context}\\
+However, implementing assistive robotic solutions present different challenges because of human-robot interaction...
+
+\matias{Third paragraph raises the research \textbf{gap} that exist to solve the problem}\\
+Previous methods have attempted to solve this problem but they fall short at certain things...
+
+\matias{Fourth paragraph presents our \textbf{solution} to address the gap}\\
+In this paper, we present an assistive autonomy system that addresses these challenges by...
+
+\matias{Last paragraph indicates the \textbf{contributions} our solution} 
+\textit{The contributions of this work are:}
+\begin{itemize}[leftmargin=10pt]
+\item \textit{Contribution 1} (this needs to be demonstrated in an experiment)
+\item \textit{Contribution 2 }(this needs to be demonstrated in an experiment)
+\item The source code is available at \url{https://www.github.com}
+\end{itemize}
+
+
+\begin{figure}[t]
+  \centering
+  % \includegraphics[width=\linewidth]{figures/dummy.jpg}
+  \missingfigure{Hero figure}
+  \caption{\textbf{Hero figure.} This figure shows an illustration of the approach.}
+  \label{fig:hero-figure}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Related work
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Related Work}
+\matias{Here we want to cover related works in at least two areas of interest. We can use subsections to split it}
+
+\matias{A good related work does not merely list papers (that's a bad related work section), but instead comprehensively explains the most relevant works that overlap with the topics of this paper. }
+
+\matias{For each paper, we want to (1) explain what they did that it was relevant, and (2) suggest some shortcoming that we address in this paper}
+
+\matias{We need to close each subsection explaining how this paper addresses the main shortcomings of prior work. In that way, we make sure that the readers understand the gap we are filling.}
+
+\matias{Lastly, as a personal advice, I recommend against citing papers using the reference number as a noun. For example, instead of saying ``\cite{bohg2017interactive} introduced a comprehensive review on interactive perception'', we say ``Bohg \etal{} \cite{bohg2017interactive} introduced a comprehensive review on interactive perception }
+
+% Some random text
+\textcolor{Gray}{\lipsum[1]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Method
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Method}
+\matias{Here we introduce the main technical novelties}
+
+\matias{I strongly recommend adding a block diagram, because robotics papers are usually about systems. The block diagram should indicate the main components, without providing excessive details}
+
+\matias{Then, the subsections of this section should correspond to blocks in the diagram. In that way it is very easy for the readers to always come back to the block diagram to get the big picture, and grasp the details in the corresponding subsection}
+
+\matias{Additionally, the subsections can have additional figures to illustrate specific steps or sub-pipelines required}
+
+\begin{figure}[h]
+  \centering
+  % \includegraphics[width=\linewidth]{figures/dummy.jpg}
+  \missingfigure{System overview}
+  \caption{\textbf{System overview.} This shows the block diagram of the solution.}
+  \label{fig:system-overview}
+\end{figure}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1-2]}
+
+\subsection{Module 1}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1-2]}
+
+\subsection{Module 2}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1-2]}
+
+\subsection{Module 3}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1-2]}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\matias{We should first provide an overview on the experiments we did to assess the contributions}
+
+\subsection{Experimental Setup}
+\matias{I recommend having this section where we explain some stuff required to understand the experiments, for example:}
+
+\noindent\textbf{Robot platform:} \matias{If we did experiments with a specific robot(s)}
+
+\noindent\textbf{Evaluation platform:} \matias{If the experiments were done in simulation or with datasets, we need to specify the computer specs were the software was run on}
+
+\noindent\textbf{Datasets:} \matias{We specify all the datasets, either existing, or manually collected. If manually collected, indicate the protocol. We indicate the naming convention for the sequences. We indicate the splits (if relevant). Indicate how the ground truth was obtained and accuracy (if pertinent)}
+
+\noindent\textbf{Evaluation metrics:} \matias{We introduce all the relevant metrics and analytical expressions if needed (e.g., if we are introducing a new one)}
+
+\noindent\textbf{Baselines:} \matias{We introduce all baselines we used. They can be introduced here or in the relevant experiments}
+
+\subsection{Experiment I -- Simulation}
+\matias{Each experiment needs to explain the purpose and what we aim to prove with it. This should respond to one (or multiple) claimed contributions}
+
+\matias{Here we explain details of which specific datasets, metrics, baselines}
+
+\matias{We provide a description on the findings and main conclusions of the experiment}
+
+\begin{figure}[h]
+  \centering
+  % \includegraphics[width=\linewidth]{figures/dummy.jpg}
+  \missingfigure{Experiment I}
+  \caption{\textbf{Experiment I -- Simulation.} We show the main results obtained in this experiment. The results show that our method achieves better performance...}
+  \label{fig:exp1}
+\end{figure}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1]}
+
+
+\subsection{Experiment II -- Real-world}
+\matias{Just another placeholder for another experiment}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1]}
+
+\subsection{Experiment III -- Demonstration}
+\matias{Sometimes we also want to describe a qualitativ eexperiment demonstrating a downstream capability}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1]}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Conclusion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\matias{Conclusion summarises the main findings of the work, discussion on limitations, and possibly future work}
+
+% Some random text
+\textcolor{Gray}{\lipsum[1-2]}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This keeps the references balanced 
+% (so they distribute among two columns, it looks tidier)
+\balance
+
+% Import references with IEEE format
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
